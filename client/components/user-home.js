@@ -3,57 +3,57 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import JobDetails from './JobDetails'
 
-
 /**
  * COMPONENT
  */
- class  UserHome  extends React.Component {
-  constructor(){
+class UserHome extends React.Component {
+  constructor() {
     super()
     this.state = {
-        jobList: [
-          {
+      jobList: [
+        {
           title: 'Developer',
           company: 'Microsoft',
           url: 'https://www.google.com'
         },
-      {
-        title: 'QA',
-        company: 'Google',
-        url: 'https://www.google.com'
-      }
-      
+        {
+          title: 'QA',
+          company: 'Google',
+          url: 'https://www.google.com'
+        }
       ]
-
     }
   }
 
-  
-
-  render(){
-
+  render() {
     return (
-      
+      <div>
         <ul>
-        <h1 style={{
-           fontFamily: 'Times New Roman',
+          <h1
+            style={{
+              fontFamily: 'Times New Roman'
+            }}
+          >
+            {' '}
+            Your Job List
+          </h1>
 
-        }}>  Your Job List 
-        
-        </h1>
-   
-        {
-          this.state.jobList.map(job => {
-           return   <li key={job.title}> Position:   {job.title}   Company:  {job.company}    
-             Website: 
-            <a href={job.url} target="_blank" >
-            
-           {job.url}</a></li>
-          })
-        }
-        
+          {this.state.jobList.map(job => {
+            return (
+              <li key={job.title}>
+                {' '}
+                Position: {job.title} Company: {job.company}
+                Website:
+                <a href={job.url} target="_blank">
+                  {job.url}
+                </a>
+              </li>
+            )
+          })}
         </ul>
- 
+
+        <JobDetails />
+      </div>
     )
   }
 }
