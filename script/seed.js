@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Job, Company} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -12,7 +12,44 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
+  const jobs = await Promise.all([
+    Job.create({
+      title: 'Software Engineer',
+      zip: '60613',
+      experience: 'Entry',
+      description: 'this is a job description',
+      time: 'Full-time',
+      active: true
+    }),
+    Job.create({
+      title: 'Customer Engineer',
+      zip: '60615',
+      experience: 'Entry',
+      description: 'this is another job description',
+      time: 'Part-time',
+      active: true
+    })
+  ])
+
+  const companies = await Promise.all([
+    Company.create({
+      name: 'Green Key',
+      size: 'Small',
+      rating: '4.33'
+    }),
+    Company.create({
+      name: 'Conversant',
+      size: 'Large',
+      rating: '2.22'
+    })
+  ])
+
+  await jobs[1].setCompany(companies[0])
+  await jobs[0].setCompany(companies[1])
+
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${jobs.length} jobs`)
+  console.log(`seeded ${companies.length} companies`)
   console.log(`seeded successfully`)
 }
 
