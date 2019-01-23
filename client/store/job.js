@@ -21,6 +21,7 @@ const getJobs = jobs => ({type: GET_JOBS, jobs})
 export const fetchJobs = () => async dispatch => {
   try {
     const res = await axios.get(`/api/jobs`)
+
     dispatch(getJobs(res.data))
   } catch (err) {
     console.error(err)
