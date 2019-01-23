@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import JobDetails from './JobDetails'
 import Chat from './Chat'
+import {fetchJobs} from '../store/index'
 
 /**
  * COMPONENT
  */
 class UserHome extends React.Component {
-  constructor() {
-    super()
+  componentDidMount() {
+    this.props.fetchJobs()
   }
 
   render() {
@@ -30,7 +31,15 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchJobs: () => {
+      dispatch(fetchJobs())
+    }
+  }
+}
+
+export default connect(mapState, mapDispatchToProps)(UserHome)
 
 /**
  * PROP TYPES
