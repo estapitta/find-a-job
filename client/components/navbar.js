@@ -8,6 +8,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
+import Chat from './Chat'
 
 const styles = {
   root: {
@@ -35,10 +36,22 @@ const Navbar = ({handleClick, isLoggedIn, classes}) => (
         </IconButton>
 
         {isLoggedIn ? (
-          <div>
+          <div
+            style={{
+              fontSize: 20
+            }}
+          >
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <a href="#" onClick={handleClick}>
+            <Link to="/home" style={{color: 'white'}}>
+              {'     '}
+              Home
+            </Link>
+            <Link to="/chat" style={{color: 'white'}}>
+              Chat
+              {'     '}
+            </Link>
+            {'     '}
+            <a href="#" onClick={handleClick} style={{color: 'white'}}>
               Logout
             </a>
           </div>
