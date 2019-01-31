@@ -2,14 +2,14 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import openMenu from './sidemenu'
+import menuIsOpen from './sidemenu'
 
 import user from './user'
 import job from './job'
 
 const reducer = combineReducers({
   user,
-  openMenu,
+  menuIsOpen,
   job
 })
 const middleware = composeWithDevTools(
