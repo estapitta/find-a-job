@@ -5,12 +5,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import menuIsOpen from './sidemenu'
 
 import user from './user'
-import job from './job'
+import jobs from './job'
 
 const reducer = combineReducers({
   user,
   menuIsOpen,
-  job
+  jobs
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

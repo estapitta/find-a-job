@@ -4,6 +4,7 @@ import {Navbar} from './components'
 import Routes from './routes'
 
 import Sidebar from './components/Sidebar'
+import SwipeList from './components/SwipeList'
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar />
       <Sidebar />
       <Routes />
+      <SwipeList />
     </div>
   )
 }
