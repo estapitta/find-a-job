@@ -9,6 +9,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import Chat from './Chat'
+import {changeSidemenu} from '../store/sidemenu'
 
 const styles = {
   root: {
@@ -23,7 +24,7 @@ const styles = {
   }
 }
 // handleClick,isLoggedIn, classes are props/object
-const Navbar = ({handleClick, isLoggedIn, classes}) => (
+const Navbar = ({handleClick, isLoggedIn, classes, showSidemenu, isOpen}) => (
   <div className={classes.root}>
     <AppBar position="static">
       <Toolbar>
@@ -31,6 +32,9 @@ const Navbar = ({handleClick, isLoggedIn, classes}) => (
           className={classes.menuButton}
           color="inherit"
           aria-label="Menu"
+          onClick={() => {
+            showSidemenu(!isOpen)
+          }}
         >
           <MenuIcon />
         </IconButton>
@@ -73,7 +77,8 @@ const Navbar = ({handleClick, isLoggedIn, classes}) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isOpen: state.menuIsOpen
   }
 }
 
@@ -81,6 +86,9 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+    },
+    showSidemenu: openMenu => {
+      dispatch(changeSidemenu(openMenu))
     }
   }
 }
