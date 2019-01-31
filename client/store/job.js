@@ -31,7 +31,7 @@ export const fetchJobs = () => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = jobs, action) {
+export default function(state = [], action) {
   switch (action.type) {
     case GET_JOBS:
       return action.jobs
