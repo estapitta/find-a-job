@@ -3,6 +3,7 @@ import SwipeEffect from './SwipeEffect'
 import {connect} from 'react-redux'
 import {fetchJobs} from '../store/job'
 
+// swipeList is the parent component
 class SwipeList extends React.Component {
   constructor(props) {
     super(props)
