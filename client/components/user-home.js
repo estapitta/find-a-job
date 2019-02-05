@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import JobDetails from './JobDetails'
-import Chat from './Chat'
 import {fetchJobs} from '../store/index'
-
+import SwipeList from './SwipeList'
 /**
  * COMPONENT
  */
@@ -16,7 +14,7 @@ class UserHome extends React.Component {
   render() {
     return (
       <div>
-        <JobDetails />
+        <SwipeList />
       </div>
     )
   }
