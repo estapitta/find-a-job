@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Job, Company} = require('../db/models')
+const {Job, Company, Industry} = require('../db/models')
 module.exports = router
 
 router.get('/:jobId', async (req, res, next) => {
@@ -17,7 +17,7 @@ router.get('/:jobId', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     const jobs = await Job.findAll({
-      include: [{model: Company}]
+      include: [{model: Company}, {model: Industry}]
     })
     res.json(jobs)
   } catch (err) {

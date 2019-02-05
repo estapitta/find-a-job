@@ -29,14 +29,20 @@ Education.belongsTo(User)
 User.hasMany(Experience)
 Experience.belongsTo(User)
 
-User.hasMany(Industry)
-Industry.belongsToMany(User, {through: 'UserIndustry'})
+// User.hasMany(Industry)
+// Industry.belongsToMany(User, {through: 'UserIndustry'})
+
+Industry.hasMany(User)
+User.belongsToMany(Industry, {through: 'UserIndustry'})
 
 Company.hasMany(Job)
 Job.belongsTo(Company)
 
-Job.hasOne(Industry)
-Industry.belongsToMany(Job, {through: 'JobIndustry'})
+// Job.hasOne(Industry)
+// Industry.belongsToMany(Job, {through: 'JobIndustry'})
+
+Industry.hasMany(Job)
+Job.belongsTo(Industry)
 
 module.exports = {
   User,

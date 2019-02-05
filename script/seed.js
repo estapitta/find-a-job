@@ -1,14 +1,22 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Job, Company} = require('../server/db/models')
+const {User, Job, Company, Industry} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
+    User.create({
+      email: 'cody@email.com',
+      password: '123',
+      firstName: 'Cody',
+      lastName: 'TheDog',
+      phone: '7733514178',
+      zip: '60613',
+      experience: 'Entry'
+    }),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
@@ -44,8 +52,22 @@ async function seed() {
     })
   ])
 
+  const industries = await Promise.all([
+    Industry.create({
+      industry: 'Tech'
+    })
+  ])
+
   await jobs[1].setCompany(companies[0])
   await jobs[0].setCompany(companies[1])
+
+  await users[0].setJobs([jobs[0]])
+  await users[1].setJobs([jobs[0]])
+
+  await users[0].setIndustries([industries[0]])
+
+  await jobs[0].setIndustry(industries[0])
+  await jobs[1].setIndustry(industries[0])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${jobs.length} jobs`)
