@@ -12,44 +12,25 @@ class JobDetails extends React.Component {
   }
 
   render() {
-    
     return (
       <div>
         <ul>
-          {!this.props.state ? (
+          {!this.props.jobs ? (
             <div> It's loading</div>
-          ) : 
-            this.props.state.jobs.map(job => {
+          ) : (
+            this.props.jobs.map(job => {
               return (
                 <li key={job.id}>
                   Job Title: {job.title}
                   {'  '}
-                  Decription: {job.description}
-                  {'  '}
-                  Experience: {job.experience}
-                  {'  '}
-                  Rating: {job.company.rating}
-                  {'  '}
                   Company:
                   {'    '}
                   {job.company.name}
-                  {/* <a href={job.company} target="_blank">
-                  {job.company}
-                </a> */}
                 </li>
               )
             })
           )}
-          }
         </ul>
-
-        <button
-          style={{
-            display: 'flex'
-          }}
-        >
-          Swipe
-        </button>
       </div>
     )
   }

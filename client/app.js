@@ -12,7 +12,7 @@ const App = () => {
       <Navbar />
       <Sidebar />
       <Routes />
-      <SwipeList />
+      {/* <SwipeList /> */}
     </div>
   )
 }
