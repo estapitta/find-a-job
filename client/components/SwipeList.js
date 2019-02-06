@@ -2,6 +2,9 @@ import React from 'react'
 import SwipeEffect from './SwipeEffect'
 import {connect} from 'react-redux'
 import {fetchJobs} from '../store/job'
+import {Company} from './Company'
+import Button from '@material-ui/core/Button'
+import {Link} from 'react-router-dom'
 
 // swipeList is the parent component
 class SwipeList extends React.Component {
@@ -48,6 +51,11 @@ class SwipeList extends React.Component {
               {job.title}
               {'    '}
               {job.company.name}
+              <Link to="/company">
+                <Button variant="contained" color="primary">
+                  Company
+                </Button>
+              </Link>
             </SwipeEffect>
           ))}{' '}
         </div>
