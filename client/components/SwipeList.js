@@ -45,20 +45,31 @@ class SwipeList extends React.Component {
   render() {
     return (
       <ul className="swipeList">
-        <div style={{backgroundColor: 'blue'}}>
-          {this.props.jobs.map(job => (
-            <SwipeEffect key={`swipeItem-${job.id}`}>
-              {job.title}
-              {'    '}
-              {job.company.name}
-              <Link to="/company">
-                <Button variant="contained" color="primary">
-                  Company
-                </Button>
-              </Link>
-            </SwipeEffect>
-          ))}{' '}
-        </div>
+        {this.props.jobs.map(job => (
+          <SwipeEffect
+            key={`swipeItem-${job.id}`}
+            style={{
+              diplay: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            {job.title}
+            {'    '}
+            {job.company.name}
+            <Link to="/company">
+              <Button
+                variant="contained"
+                color="primary"
+                style={{
+                  float: 'right',
+                  alignSelf: 'right'
+                }}
+              >
+                Info
+              </Button>
+            </Link>
+          </SwipeEffect>
+        ))}{' '}
         <button
           type="button"
           className="swipeList-addButton"
