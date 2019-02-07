@@ -129,7 +129,17 @@ class SwipeEffect extends React.Component {
         className="swipeItem"
         style={{
           height: this.state.height + 'px',
-          transition: 'height 250ms ease-in-out'
+          transition: 'height 250ms ease-in-out',
+          display: 'flex',
+          paddingRight: '80px',
+          flex: 1,
+          width: '50%',
+          justifyContent: 'center'
+
+          //padding: '70px',
+          //paddingBottom: '70px',
+          //borderLeft: '60px'
+          // margin: 'auto'
         }}
         onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
         onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
