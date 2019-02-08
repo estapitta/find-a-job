@@ -129,12 +129,7 @@ class SwipeEffect extends React.Component {
         className="swipeItem"
         style={{
           height: this.state.height + 'px',
-          transition: 'height 250ms ease-in-out',
-          display: 'flex',
-          paddingRight: '80px',
-          flex: 1,
-          width: '50%',
-          justifyContent: 'center'
+          transition: 'height 250ms ease-in-out'
 
           //padding: '70px',
           //paddingBottom: '70px',

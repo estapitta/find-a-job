@@ -2,7 +2,6 @@ import React from 'react'
 import SwipeEffect from './SwipeEffect'
 import {connect} from 'react-redux'
 import {fetchJobs} from '../store/job'
-import {Company} from './Company'
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
 
@@ -44,7 +43,12 @@ class SwipeList extends React.Component {
   }
   render() {
     return (
-      <ul className="swipeList">
+      <ul
+        className="swipeList"
+        style={{
+          marginTop: '150px'
+        }}
+      >
         {this.props.jobs.map(job => (
           <SwipeEffect
             key={`swipeItem-${job.id}`}
@@ -56,7 +60,7 @@ class SwipeList extends React.Component {
             {job.title}
             {'    '}
             {job.company.name}
-            <Link to="/company">
+            <Link to={`/jobDetails/${job.id}`}>
               <Button
                 variant="contained"
                 color="primary"

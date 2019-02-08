@@ -13,7 +13,15 @@ class UserHome extends React.Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{
+          display: 'flex',
+
+          flex: 1,
+
+          justifyContent: 'center'
+        }}
+      >
         <SwipeList />
       </div>
     )

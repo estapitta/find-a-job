@@ -7,7 +7,7 @@ export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {default as JobDetails} from './JobDetails'
 export {default as Chat} from './Chat'
-export {default as Company} from './Company'
+
 export {Login, Signup} from './auth-form'
 export {default as SwipeEffect} from './SwipeEffect'
 export {default as SwipeList} from './SwipeList'
