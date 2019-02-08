@@ -1,36 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchJobs} from '../store/job'
 
 class JobDetails extends React.Component {
-  constructor() {
-    super()
-  }
-
-  componentDidMount() {
-    this.props.fetchJobs()
-  }
-
   render() {
+    let jobId = this.props.match.params.jobId
+
+    let foundJob = this.props.jobs.find(job => {
+      return job.id === Number(jobId)
+    })
     return (
       <div>
-        <ul>
-          {!this.props.jobs ? (
-            <div> It's loading</div>
-          ) : (
-            this.props.jobs.map(job => {
-              return (
-                <li key={job.id}>
-                  Job Title: {job.title}
-                  {'  '}
-                  Company:
-                  {'    '}
-                  {job.company.name}
-                </li>
-              )
-            })
-          )}
-        </ul>
+        {!foundJob ? (
+          <div> It's loading</div>
+        ) : (
+          <div>{foundJob.description}</div>
+        )}
       </div>
     )
   }
@@ -42,12 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchJobs: () => {
-      dispatch(fetchJobs())
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(JobDetails)
+export default connect(mapStateToProps)(JobDetails)
